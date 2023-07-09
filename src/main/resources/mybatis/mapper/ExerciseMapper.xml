@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.exerciseBackend.mapper.ExerciseMapper">
+    <resultMap id="exerciseMap" type="exerciseResponse">
+        <id property="exerciseDate" column="EXERCISE_DATE"/>
+        <collection property="exerciseDetails" ofType="ExerciseDetail" autoMapping="true"/>
+    </resultMap>
+
+    <select id="getExerciseList" resultMap="exerciseMap">
+        SELECT
+            EB.CODE
+            , EB.NAME
+            , ED.SEQ
+            , ED.SET_NUMBER
+            , ED.TIMES
+            , ED.EXERCISE_DATE
+            , ED.WEIGHT
+         FROM EXERCISE_BASE EB
+         JOIN EXERCISE_DETAIL ED
+           ON EB.CODE = ED.CODE
+        ORDER BY EXERCISE_DATE DESC
+    </select>
+</mapper>
