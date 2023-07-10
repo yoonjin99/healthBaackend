@@ -1,6 +1,7 @@
 package com.example.exerciseBackend.controller;
 
 import com.example.exerciseBackend.dto.request.ExerciseRequest;
+import com.example.exerciseBackend.dto.response.ExerciseDetail;
 import com.example.exerciseBackend.service.ExerciseService;
 import com.example.exerciseBackend.dto.response.ExerciseResponse;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,11 @@ public class ExerciseController {
         return exerciseService.getExerciseList();
     }
 
+    @GetMapping("/getExerciseDetail")
+    public ExerciseDetail getExerciseDetail(int seq){
+        return exerciseService.getExerciseDetail(seq);
+    }
+
     // 운동 등록
     @PostMapping("/insertExercise")
     public void insertExercise(@RequestBody ExerciseRequest exerciseRequest){
@@ -30,6 +36,14 @@ public class ExerciseController {
     }
 
     // 운동 수정
+    @PostMapping("/updateExercise")
+    public void updateExercise(@RequestBody ExerciseRequest exerciseRequest){
+        exerciseService.updateExercise(exerciseRequest);
+    }
 
     // 운동 삭제
+    @PostMapping("/deleteExercise")
+    public void deleteExercise(@RequestBody ExerciseRequest exerciseRequest){
+        exerciseService.deleteExercise(exerciseRequest);
+    }
 }

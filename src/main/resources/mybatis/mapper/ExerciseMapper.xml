@@ -21,4 +21,19 @@
            ON EB.CODE = ED.CODE
         ORDER BY EXERCISE_DATE DESC
     </select>
+
+    <select id="getExerciseDetail" resultType="ExerciseDetail">
+        SELECT
+            EB.CODE
+             , EB.NAME
+             , ED.SEQ
+             , ED.SET_NUMBER
+             , ED.TIMES
+             , ED.EXERCISE_DATE
+             , ED.WEIGHT
+        FROM EXERCISE_BASE EB
+        JOIN EXERCISE_DETAIL ED
+          ON EB.CODE = ED.CODE
+        WHERE ED.SEQ = #{seq}
+    </select>
 </mapper>

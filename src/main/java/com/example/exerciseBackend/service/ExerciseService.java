@@ -1,6 +1,7 @@
 package com.example.exerciseBackend.service;
 
 import com.example.exerciseBackend.dto.request.ExerciseRequest;
+import com.example.exerciseBackend.dto.response.ExerciseDetail;
 import com.example.exerciseBackend.mapper.ExerciseMapper;
 import com.example.exerciseBackend.mapper.ExerciseTrxMapper;
 import com.example.exerciseBackend.dto.response.ExerciseResponse;
@@ -21,8 +22,22 @@ public class ExerciseService {
         return exerciseMapper.getExerciseList();
     }
 
+    public ExerciseDetail getExerciseDetail(int seq){
+        return exerciseMapper.getExerciseDetail(seq);
+    }
+
     @Transactional(rollbackFor = Exception.class)
     public void insertExercise(ExerciseRequest exerciseRequest){
         exerciseTrxMapper.insertExercise(exerciseRequest);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void updateExercise(ExerciseRequest exerciseRequest){
+        exerciseTrxMapper.updateExercise(exerciseRequest);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteExercise(ExerciseRequest exerciseRequest){
+        exerciseTrxMapper.deleteExercise(exerciseRequest);
     }
 }

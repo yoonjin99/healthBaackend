@@ -23,4 +23,20 @@
             , #{exerciseDate}
         )
     </insert>
+
+    <update id="updateExercise">
+        update exercise_detail
+           set
+            code = #{code}
+            , set_number = #{setNumber}
+            , times = #{times}
+            , weight = #{weight}
+            , exercise_date = #{exerciseDate}
+        where seq = #{seq}
+    </update>
+
+    <delete id="deleteExercise">
+        delete from exercise_detail
+         where seq = #{seq}
+    </delete>
 </mapper>
