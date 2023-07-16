@@ -1,6 +1,7 @@
 package com.example.exerciseBackend.controller;
 
 import com.example.exerciseBackend.dto.request.ExerciseRequest;
+import com.example.exerciseBackend.dto.response.ExerciseChartResponse;
 import com.example.exerciseBackend.dto.response.ExerciseDetail;
 import com.example.exerciseBackend.service.ExerciseService;
 import com.example.exerciseBackend.dto.response.ExerciseResponse;
@@ -45,5 +46,10 @@ public class ExerciseController {
     @PostMapping("/deleteExercise")
     public void deleteExercise(@RequestBody ExerciseRequest exerciseRequest){
         exerciseService.deleteExercise(exerciseRequest);
+    }
+
+    @GetMapping("/getChartByExercise")
+    public List<ExerciseChartResponse> getChartByExercise(int code){
+        return exerciseService.getChartByExercise(code);
     }
 }
